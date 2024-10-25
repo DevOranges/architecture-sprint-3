@@ -40,7 +40,7 @@ entity Commands {
 Module ||--o{ Device
 Device ||--o{ Telemetry
 Device ||--o{ Commands
-House ||--|| Module
+House ||--o{ Module
 User ||--o{ House
 
 @enduml

@@ -16,6 +16,7 @@ System_Boundary(House, "Дом") {
 Rel(user, Server, "просматривает и управляет температурой в своих домах")
 Rel(specialist, sensor, "устанавливает, обслуживает")
 Rel(specialist, relay, "устанавливает, обслуживает")
+Rel(specialist, Server, "добавляет в систему устройства, дома")
 Rel(Server, sensor, "получает значения температуры от")
 Rel(Server, relay, "управляет отоплением посредством")
 
