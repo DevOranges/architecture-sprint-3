@@ -1,0 +1,33 @@
+@startuml
+
+title Container diagram
+!include <C4/C4_Container>
+
+Person(user, "Пользователь", "пользователь системы Умный Дом")
+Person(employee, "Тех. поддержка", "специалист техподдержки")
+UpdateRelStyle($lineColor=black, &textColor=$COLOR_REL_TEXT)
+
+System(Server, "Умный дом") {
+    Container(api_gateway, "API gateway", "kusk", "доступ к апи, маршрутизация, балансировка")
+    Container(api, "rest API", "fastapi, python", "отправка пользовательских команд в очередь, чтение телеметрии")
+    Container(helpdesk, "rest API", "fastapi, python", "ведение заявок по обращениям пользователей")
+    ContainerQueue(queue, "Очередь", "kafka", "команды")
+    ContainerDb(db, "БД", "postgres", "данные с устройств")
+    Container(worker, "Воркер", "python, aiokafka", "управление устройствами")
+    Rel(api_gateway, helpdesk, "<color:white><size:10>предоставляет доступ")
+    Rel(api_gateway, api, "<color:white><size:10>предоставляет доступ")
+    Rel_Down(api, queue, "<color:white>отправляет команды")
+    Rel_Down(queue, worker, "<color:white>отправляет команды")
+    Rel_Right(api, db, "<color:white>читает данные")
+    Rel_Right(worker, db, "<color:white>записывает данные")
+}
+System_Boundary(House, "Дом") {
+    System_Ext(module, "Модуль", "управляет устройствами, снимает показания")
+}
+
+Rel(user, api_gateway, "<color:black>управляет устройствами, просматривает показания")
+Rel(employee, helpdesk, "<color:black>работает с обращениями пользователей")
+Rel(worker, module, "<color:black>отправляет команды, запрашивает показания")
+Rel(user, module, "<color:black>устанавливает и обслуживает")
+
+@enduml

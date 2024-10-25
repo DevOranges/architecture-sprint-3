@@ -1,0 +1,17 @@
+@startuml
+title Domain diagram
+!include <C4/C4_Component>
+Boundary(domain1, "Управление домом", "domain") {
+    Container(container1, "Телеметрия", "subdomain") {
+        Component(component1, "Хранение", "context")
+        Component(component2, "Сбор и передача", "context")
+    }
+    Container(container2, "Подключение и управление", "subdomain") {
+        Component(component4, "Установка устройств", "context")
+        Component(component5, "Управление устройствами", "context")
+    }
+}
+
+Boundary(domain2, "Сервисное обслуживание дома/устройств", "domain") {
+}
+@enduml

@@ -1,3 +1,31 @@
+# Диаграммы
+
+## Context
+Диаграмма (.puml) контекста монолита и ее изображение (.png) расположены:
+`diagrams/src/monolith/Context.puml`
+`diagrams/png/Context_diagram.png`
+
+## Container
+Диаграмма (.puml) контекста монолита и ее изображение (.png) расположены:
+`diagrams/src/microservices/Container.puml`
+`diagrams/png/Container_diagram.png`
+
+## Component
+Диаграмма (.puml) контекста монолита и ее изображение (.png) расположены:
+`diagrams/src/microservices/Component.puml`
+`diagrams/png/Component_diagram.png`
+
+## Entity Relationship
+Диаграмма (.puml) связей сущностей и ее изображение (.png) расположены:
+`diagrams/src/microservices/ER.puml`
+`diagrams/png/ER.png`
+
+## OpenAPI / AsyncAPI
+`.yaml` файлы расположены:
+`diagrams/src/microservices/asyncapi.yaml`
+`diagrams/src/microservices/openapi.yaml`
+
+
 # Базовая настройка
 
 ## Запуск minikube
